@@ -74,26 +74,26 @@ func TestDegreeToTimeFloat64(t *testing.T) {
 			args:          []args{{degrees: 360}},
 			expectedTimes: []string{"12:00"},
 		},
-		//{
-		//	name:          "When 0 < input < 360, time resolves correctly",
-		//	args:          []args{{degrees: 0.25}, {degrees: 0.74}, {degrees: 0.75}, {degrees: 133.456}, {degrees: 279.60733}, {degrees: 354.9993333}},
-		//	expectedTimes: []string{"12:01", "12:01", "12:02", "04:27", "09:19", "11:50"},
-		//},
-		//{
-		//	name:          "When 360 < input < 0, time resolves correctly",
-		//	args:          []args{{degrees: -0.25}, {degrees: -0.74}, {degrees: -0.75}, {degrees: -133.456}, {degrees: -279.60733}, {degrees: -354.9993333}},
-		//	expectedTimes: []string{"11:59", "11:59", "11.58", "07:33", "02:41", "01:10"},
-		//},
+		{
+			name:          "When 0 < input < 360, time resolves correctly",
+			args:          []args{{degrees: 0.25}, {degrees: 0.74}, {degrees: 0.75}, {degrees: 133.456}, {degrees: 279.60733}, {degrees: 354.9993333}},
+			expectedTimes: []string{"12:01", "12:01", "12:02", "04:27", "09:19", "11:50"},
+		},
+		{
+			name:          "When 360 < input < 0, time resolves correctly",
+			args:          []args{{degrees: -0.25}, {degrees: -0.74}, {degrees: -0.75}, {degrees: -133.456}, {degrees: -279.60733}, {degrees: -354.9993333}},
+			expectedTimes: []string{"11:59", "11:59", "11.58", "07:33", "02:41", "01:10"},
+		},
 		{
 			name:          "When input > 360, time resolves correctly",
 			args:          []args{{degrees: 720}, {degrees: 1111}, {degrees: 245774}},
 			expectedTimes: []string{"12:00", "01:02", "08:28"},
 		},
-		//{
-		//	name:          "When input < 0, time resolves correctly",
-		//	args:          []args{{degrees: -720}, {degrees: -1111}, {degrees: -245774}},
-		//	expectedTimes: []string{"12:00", "10:58", "03:32"},
-		//},
+		{
+			name:          "When input < 0, time resolves correctly",
+			args:          []args{{degrees: -720}, {degrees: -1111}, {degrees: -245774}},
+			expectedTimes: []string{"12:00", "10:58", "03:32"},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
